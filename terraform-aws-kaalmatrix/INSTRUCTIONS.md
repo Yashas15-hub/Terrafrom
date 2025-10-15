@@ -1,4 +1,5 @@
-1. Project scaffold
+🧩 KaalMatrix Terraform AWS Mini-Stack
+📁 Project Scaffold
 
 terraform-aws-kaalmatrix/
 ├─ 00-bootstrap/ # One-time remote-state setup (S3 + DynamoDB)
@@ -28,9 +29,8 @@ terraform-aws-kaalmatrix/
 ├─ user_data.sh.tftpl # Cloud-init bootstrap (Nginx banner)
 └─ INSTRUCTIONS.md # This document
 
-2. Command order
-
-# A) Bootstrap the backend (S3 state + DynamoDB locks)
+⚙️ Command Order
+A) Bootstrap the backend (S3 state + DynamoDB locks)
 
 cd 00-bootstrap
 terraform init
@@ -39,71 +39,61 @@ terraform validate
 terraform plan
 terraform apply -auto-approve
 
-# B) Copy outputs to ../backend.hcl
+B) Copy outputs to ../backend.hcl
 
-# backend.hcl:
+bucket = "<state_bucket from bootstrap>"
+key = "core/terraform.tfstate"
+region = "us-east-1"
+dynamodb_table = "<lock_table from bootstrap>"
+encrypt = true
 
-# bucket = "<state_bucket from bootstrap>"
-
-# key = "core/terraform.tfstate"
-
-# region = "us-east-1"
-
-# dynamodb_table = "<lock_table from bootstrap>"
-
-# encrypt = true
-
-# C) Initialize the main stack with the backend
+C) Initialize the main stack with the backend
 
 cd ..
 terraform init -backend-config=backend.hcl
 
-# D) Format & validate
+D) Format & validate
 
 terraform fmt -recursive
 terraform validate
 
-# E) Plan & apply (DEV)
+E) Plan & apply (DEV)
 
 terraform plan -var-file=envs/dev.tfvars
 terraform apply -var-file=envs/dev.tfvars -auto-approve
 
-# F) Outputs (example)
+F) Outputs (example)
 
 terraform output
 
-# G) Destroy when finished (use same tfvars you applied with)
+G) Destroy when finished (use same tfvars you applied with)
 
 terraform destroy -var-file=envs/dev.tfvars
 
-3. Sample output
-   account_id = "666839000177"
-   demo_bucket_name = "kmx-dev-assets-cabb"
-   instance_public_ips = [
-   "18.206.86.160",
-   "3.89.111.220",
-   ]
-   public_subnets = [
-   "subnet-0ef4ae6cc582ecf41",
-   "subnet-0b22a3c54e589e0f2",
-   ]
-   vpc_id = "vpc-0d3bb94266ac62219"
+📊 Sample Output
 
-4. Initialize Git & first push
+account_id = "666839000177"
+demo_bucket_name = "kmx-dev-assets-cabb"
+instance_public_ips = [
+"18.206.86.160",
+"3.89.111.220",
+]
+public_subnets = [
+"subnet-0ef4ae6cc582ecf41",
+"subnet-0b22a3c54e589e0f2",
+]
+vpc_id = "vpc-0d3bb94266ac62219"
 
-# From the project root
+🧠 Initialize Git & First Push
 
+From the project root:
 git init
 
-# Stage and commit
-
+Stage and commit:
 git add .
 git commit -m "chore: initial commit (KaalMatrix Terraform AWS mini-stack)"
 
-# Create a new repo on your Git host (GitHub/GitLab/Bitbucket)
-
-# Then add the remote (GitHub example):
-
+Create a new repo on your Git host (GitHub/GitLab/Bitbucket), then add the remote:
 git branch -M main
 git remote add origin https://github.com/<your-user>/<your-repo>.git
 git push -u origin main
