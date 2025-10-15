@@ -102,4 +102,8 @@ Create a new repo on your Git host (GitHub/GitLab/Bitbucket), then add the remot
 git branch -M main
 git remote add origin https://github.com/<your-user>/<your-repo>.git
 git push -u origin main
+
+  <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/e3f67f9d-6bdd-4a73-93c7-7c0ca70e6075" />
+  
+
 </pre>
