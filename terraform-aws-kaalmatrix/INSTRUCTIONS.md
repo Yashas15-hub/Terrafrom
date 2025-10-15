@@ -12,12 +12,12 @@ terraform-aws-kaalmatrix/
 │   └── prod.tfvars
 │
 ├── modules/
-│   ├── vpc/                         # VPC, public subnets, route tables, SG
+│   ├── vpc/                        # VPC, public subnets, route tables, SG
 │   │   ├── main.tf
 │   │   ├── variables.tf
 │   │   └── outputs.tf
 │   │
-│   └── ec2/                         # EC2 instances (count via names), user_data
+│   └── ec2/                        # EC2 instances (count via names), user_data
 │       ├── main.tf
 │       ├── variables.tf
 │       └── outputs.tf
