@@ -2,32 +2,37 @@
 📁 Project Scaffold
 
 terraform-aws-kaalmatrix/
-├─ 00-bootstrap/ # One-time remote-state setup (S3 + DynamoDB)
-│ ├─ main.tf
-│ ├─ variables.tf
-│ └─ outputs.tf
-├─ envs/ # Environment-specific variables (no workspaces needed)
-│ ├─ dev.tfvars
-│ └─ prod.tfvars
-├─ modules/
-│ ├─ vpc/ # VPC, public subnets, route tables, SG
-│ │ ├─ main.tf
-│ │ ├─ variables.tf
-│ │ └─ outputs.tf
-│ └─ ec2/ # EC2 instances (count via names), user_data
-│ ├─ main.tf
-│ ├─ variables.tf
-│ └─ outputs.tf
-├─ backend.hcl # Filled from 00-bootstrap outputs
-├─ versions.tf # Required Terraform + providers + backend type
-├─ providers.tf # AWS + default tags
-├─ variables.tf # Inputs + validation
-├─ locals.tf # Naming, tags, AZs, helpers
-├─ data.tf # AMI lookup, public IP, identity, AZs
-├─ main.tf # Wires modules + conditional S3 demo bucket
-├─ outputs.tf # VPC, subnets, EC2 IPs, optional bucket
-├─ user_data.sh.tftpl # Cloud-init bootstrap (Nginx banner)
-└─ INSTRUCTIONS.md # This document
+├── 00-bootstrap/                   # One-time remote-state setup (S3 + DynamoDB)
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+│
+├── envs/                           # Environment-specific variables (no workspaces needed)
+│   ├── dev.tfvars
+│   └── prod.tfvars
+│
+├── modules/
+│   ├── vpc/                         # VPC, public subnets, route tables, SG
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   └── ec2/                         # EC2 instances (count via names), user_data
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│
+├── backend.hcl                     # Filled from 00-bootstrap outputs
+├── versions.tf                     # Required Terraform + providers + backend type
+├── providers.tf                    # AWS + default tags
+├── variables.tf                    # Inputs + validation
+├── locals.tf                       # Naming, tags, AZs, helpers
+├── data.tf                         # AMI lookup, public IP, identity, AZs
+├── main.tf                         # Wires modules + conditional S3 demo bucket
+├── outputs.tf                      # VPC, subnets, EC2 IPs, optional bucket
+├── user_data.sh.tftpl              # Cloud-init bootstrap (Nginx banner)
+└── INSTRUCTIONS.md                 # This document
+
 
 ⚙️ Command Order
 A) Bootstrap the backend (S3 state + DynamoDB locks)
