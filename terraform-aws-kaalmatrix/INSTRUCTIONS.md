@@ -1,6 +1,6 @@
 🧩 KaalMatrix Terraform AWS Mini-Stack
 📁 Project Scaffold
-
+<pre>
 terraform-aws-kaalmatrix/
 ├── 00-bootstrap/                   # One-time remote-state setup (S3 + DynamoDB)
 │   ├── main.tf
@@ -32,7 +32,7 @@ terraform-aws-kaalmatrix/
 ├── outputs.tf                      # VPC, subnets, EC2 IPs, optional bucket
 ├── user_data.sh.tftpl              # Cloud-init bootstrap (Nginx banner)
 └── INSTRUCTIONS.md                 # This document
-
+</pre>
 
 ⚙️ Command Order
 A) Bootstrap the backend (S3 state + DynamoDB locks)
