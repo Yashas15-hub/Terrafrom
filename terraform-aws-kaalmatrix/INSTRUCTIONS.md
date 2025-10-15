@@ -32,7 +32,7 @@ terraform-aws-kaalmatrix/
 ├── outputs.tf                      # VPC, subnets, EC2 IPs, optional bucket
 ├── user_data.sh.tftpl              # Cloud-init bootstrap (Nginx banner)
 └── INSTRUCTIONS.md                 # This document
-</pre>
+
 
 ⚙️ Command Order
 A) Bootstrap the backend (S3 state + DynamoDB locks)
@@ -102,3 +102,4 @@ Create a new repo on your Git host (GitHub/GitLab/Bitbucket), then add the remot
 git branch -M main
 git remote add origin https://github.com/<your-user>/<your-repo>.git
 git push -u origin main
+</pre>
