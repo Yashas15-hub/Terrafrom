@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eux
+echo "Hello from KaalMatrix on $(hostname)" > /var/tmp/kmx.txt
+apt-get update -y
+apt-get install -y nginx
+systemctl enable nginx
+systemctl start nginx
+echo "<h1>KaalMatrix - ${env} - $(hostname)</h1>" > /var/www/html/index.html

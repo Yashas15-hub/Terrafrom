@@ -1,0 +1,21 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.*
+*.tfstate.backup
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Vars & secrets (adjust as needed)
+*.tfvars
+*.tfvars.json
+backend.hcl
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
